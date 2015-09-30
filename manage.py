@@ -6,7 +6,7 @@ from flask_script import (Manager, Shell, Server, prompt, prompt_pass,
                           prompt_bool)
 
 
-from neighbour.neighbour import create_app
+from neighbour.app import create_app
 
 # Use the development configuration if available
 from neighbour.configs.default import DefaultConfig as Config
@@ -16,7 +16,7 @@ manager = Manager(app)
 
 
 # Run local server
-manager.add_command("runserver", Server("localhost", port=5000))
+manager.add_command("runserver", Server("localhost", port=8001))
 
 
 # @manager.command

@@ -1,6 +1,12 @@
+# -*- coding: utf-8 -*-
 from flask import Flask
-from district.views import distric
-from wechat.navbar import wechat_navbar
+from neighbour.district.views import distric
+from neighbour.wechat.navbar import wechat_navbar
+from neighbour.extensions import db
+from neighbour.commodity.models import Product
+from flask_sqlalchemy import SQLAlchemy
+
+
 def create_app(config=None):
     """
     Creates the app
@@ -16,19 +22,26 @@ def create_app(config=None):
 
     configure_blueprint(app)
     configure_extensions(app)
-    # configure_extensions(app)
     app.debug = app.config['DEBUG']
     return app
-
+# app = Flask(__name__)
+# db = SQLAlchemy(create_app())
 
 def configure_blueprint(app):
     app.register_blueprint(distric)
-
     app.register_blueprint(wechat_navbar)
 
 
 def configure_extensions(app):
-    pass
+    # Flask-SQLAlchemy
+    db.init_app(app)
+    db.app = app
 
 if __name__ == '__main__':
-    pass
+    app = create_app()
+    db.create_all()
+    product = Product.query.filter_by(product_id=1).first()
+    if product:
+        print product.orginal_price
+    else:
+        print u'不存在该数据'
