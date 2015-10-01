@@ -4,7 +4,7 @@ from neighbour.utils.database import CRUDMixin
 
 # 商品
 class Product(db.Model, CRUDMixin):
-    __tablename__ = 'product'
+    __tablename__ = 't_product'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(128), nullable=False)
     content = db.Column(db.TEXT)
@@ -17,14 +17,13 @@ class Product(db.Model, CRUDMixin):
     # one-to-many
     images = db.relationship('ProductImage',
                              backref='product',
-                             primaryjoin='ProductImage.product_id == Product.id',
-                             cascade='all, ')
+                             primaryjoin='ProductImage.product_id == Product.id')
 
 # 商品图片
 class ProductImage(db.Model, CRUDMixin):
-    __tablename__ = 'product_img'
+    __tablename__ = 't_product_img'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    product_id = db.Column(db.Integer, db.ForeignKey(Product.id))
+    product_id = db.Column(db.Integer, db.ForeignKey('t_product.id'))
     img_url = db.Column(db.String(512))
     order = db.Column(db.SmallInteger)
 

@@ -11,7 +11,7 @@ from flask_themes2 import Themes
 from flask_plugins import PluginManager
 from flask_babelex import Babel
 from flask_wtf.csrf import CsrfProtect
-from flask_admin import Admin
+
 
 # Database
 db = SQLAlchemy()
@@ -46,6 +46,4 @@ babel = Babel()
 # CSRF
 csrf = CsrfProtect()
 
-# Admin
-admin = Admin()
 

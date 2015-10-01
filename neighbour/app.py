@@ -40,8 +40,3 @@ def configure_extensions(app):
 if __name__ == '__main__':
     app = create_app()
     db.create_all()
-    product = Product.query.filter_by(product_id=1).first()
-    if product:
-        print product.orginal_price
-    else:
-        print u'不存在该数据'
