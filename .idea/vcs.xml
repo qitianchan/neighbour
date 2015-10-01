@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../flaskbb" vcs="Git" />
-    <mapping directory="J:/PycharmProjects/flaskbb" vcs="Git" />
   </component>
 </project>
